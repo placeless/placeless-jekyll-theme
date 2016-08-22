@@ -1,0 +1,191 @@
+/**
+ * Site header
+ */
+.site-header {
+    // border-top: 5px solid $grey-color-dark;
+    border-bottom: 1px solid $grey-color-light;
+    min-height: 56px;
+
+    // Positioning context for the mobile navigation icon
+    position: relative;
+}
+
+.site-title {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 56px;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    float: left;
+
+    // &,
+    // &:visited {
+    //     color: $grey-color-dark;
+    // }
+}
+
+.site-nav {
+    float: right;
+    line-height: 56px;
+    font-size: 18px;
+    letter-spacing: -1px;
+
+    .page-link {
+        color: $grey-color;
+        font-weight: 300;
+        // color: $text-color;
+        line-height: $base-line-height;
+
+        // Gaps between nav items, but not on the last one
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    @include media-query-min($on-screen) {
+        position: absolute;
+        top: 9px;
+        right: $spacing-unit / 2;
+        background-color: $background-color;
+        // border: 1px solid $grey-color-light;
+        // border-radius: 5px;
+        text-align: right;
+
+        .page-link {
+            display: block;
+            padding: 5px 10px;
+
+            &:not(:last-child) { margin-right: 0; }
+            margin-left: 20px;
+        }
+    }
+}
+
+
+
+/**
+ * Site footer
+ */
+// .site-footer {
+//     border-top: 1px solid $grey-color-light;
+//     padding: $spacing-unit 0;
+// }
+//
+// .footer-heading {
+//     font-size: 18px;
+//     margin-bottom: $spacing-unit / 2;
+// }
+//
+// .contact-list,
+// .social-media-list {
+//     list-style: none;
+//     margin-left: 0;
+// }
+//
+// .footer-col-wrapper {
+//     font-size: 15px;
+//     color: $grey-color;
+//     margin-left: -$spacing-unit / 2;
+//     @extend %clearfix;
+// }
+//
+// .footer-col {
+//     float: left;
+//     margin-bottom: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+// }
+//
+// .footer-col-1 {
+//     width: -webkit-calc(35% - (#{$spacing-unit} / 2));
+//     width:         calc(35% - (#{$spacing-unit} / 2));
+// }
+//
+// .footer-col-2 {
+//     width: -webkit-calc(20% - (#{$spacing-unit} / 2));
+//     width:         calc(20% - (#{$spacing-unit} / 2));
+// }
+//
+// .footer-col-3 {
+//     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
+//     width:         calc(45% - (#{$spacing-unit} / 2));
+// }
+//
+// @include media-query($on-laptop) {
+//     .footer-col-1,
+//     .footer-col-2 {
+//         width: -webkit-calc(50% - (#{$spacing-unit} / 2));
+//         width:         calc(50% - (#{$spacing-unit} / 2));
+//     }
+//
+//     .footer-col-3 {
+//         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+//         width:         calc(100% - (#{$spacing-unit} / 2));
+//     }
+// }
+//
+// @include media-query($on-palm) {
+//     .footer-col {
+//         float: none;
+//         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+//         width:         calc(100% - (#{$spacing-unit} / 2));
+//     }
+// }
+
+
+
+/**
+ * Page content
+ */
+.page-content {
+    padding: $spacing-unit 0;
+    margin-bottom: 40px;
+    @include media-query-max($on-screen) {
+        font-size:1.125em;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+    }
+    @include media-query-min($on-screen) {
+        // font-size: 1.125em;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+}
+
+.page-heading { font-size: 20px; }
+
+.home {
+  margin-top: -1.5em;
+  h2 { color: lighten($text-color, 10%); }
+}
+
+.post-list {
+    margin-left: 2em;
+    list-style: circle;
+    color: $text-color;
+    // > li {
+    //     margin-bottom: $spacing-unit / 5;
+    // }
+    a {
+      color: lighten($text-color, 10%);
+      // border-bottom: solid 1px transparent;
+      &:hover { border-bottom: solid 1px $grey-color; }
+      // &:visited { border-bottom: solid 1px transparent; }
+    }
+}
+
+.post-meta {
+    font-size: $small-font-size;
+    color: $grey-color;
+}
+
+.post-link { font-size: 16px; }
+
+
+/**
+ * Posts
+ */
+.post-header { margin-bottom: $spacing-unit; }
+.post a:hover { border-bottom: solid 1px $grey-color; }
+.post ul, { list-style: circle; }
+.post ul li, .post ol li { margin-bottom: $spacing-unit / 6; }
+.post { letter-spacing: .5px; }
