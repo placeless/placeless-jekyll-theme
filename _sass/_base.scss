@@ -60,6 +60,7 @@ strong { font-weight: 600; }
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
+iframe, video, hr,
 %vertical-rhythm { margin-bottom: $spacing-unit / 2; }
 
 
@@ -240,14 +241,14 @@ pre {
 }
 
 /**
- * Frame
- */
-iframe { margin-bottom: $spacing-unit / 2; }
-
-/**
  * Video Tag
  */
- video {
-     width: 100%;
-     margin-bottom: $spacing-unit / 2;
+ video { width: 100%; }
+
+ /**
+ * hr Tag
+ */
+ hr {
+    border: 0 none;
+    border-bottom: 1px solid $grey-color;
  }
