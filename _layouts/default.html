@@ -1,17 +1,41 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
+<!doctype html>
+<html lang="zh-cmn-Hans">
 
   {% include head.html %}
 
   <body>
-
-    {% include header.html %}
-
     <div class="page-content" id="article">
       <div class="wrapper">
         {{ content }}
       </div>
     </div>
+    <script>
+      // open outbound links in new tab
+      let origin = document.location.origin
+      let links = document.getElementsByTagName('a')
+      for (let link of links) {
+        if (link.href && link.href.indexOf(origin) != 0 && !link.href.includes('mailto:')) link.setAttribute('target', '_blank')
+      }
+
+      // google analytics
+      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+ga('create', '{{ site.tracking.ga_id }}', 'auto', {'sampleRate': 100, 'siteSpeedSampleRate': 100}); ga('send', 'pageview')
+
+      // responsive table
+      let tables = document.getElementsByTagName('table')
+      for (let table of tables) {
+        let ths = table.tHead.rows[0].cells
+        let trs = table.tBodies[0].rows
+        for (let row of trs) {
+          for (let i = 0; i < row.cells.length; i++) {
+            row.cells[i].setAttribute('data-label', ths[i].textContent)
+          }
+        }
+      }
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <script src="/js/zooming.min.js"></script>
+    <script>if (window.Zooming) window.addEventListener('load', function () { new Zooming().listen('.post-content img') })</script>
 
   </body>
 

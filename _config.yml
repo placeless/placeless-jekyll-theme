@@ -6,15 +6,27 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: placeless
+title: minefield
 email: placeless@outlook.com
-description: "question came and went, like a helicopter over head..."
+author: "Mr. Hello"
+logo: "./apple-touch-icon.png"
+lang: "zh-cmn-Hans"
+description: "All animals are equal, but some animals are more equal than others."
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://placeless.net" # the base hostname & protocol for your site
-# twitter_username: jekyllrb
-# github_username:  jekyll
+url: "https://placeless.net" # the base hostname & protocol for your site
 timezone: Asia/Shanghai
 encoding: UTF-8
+
+social:
+  name: placeless
+  links:
+    - https://twitter.com/placeless
+
+webmaster_verifications:
+  google: ""
+
+tracking:
+  ga_id: "UA-xxxxxx-yy"
 
 # Build settings
 markdown: kramdown
@@ -25,8 +37,10 @@ sass:
   sass_dir: _sass
   style: compressed
 
-# paginate: 10
-# paginate_path: "/page:num/"
-#
-#
-# gems: [jekyll-paginate]
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+permalink: /blog/:title
+

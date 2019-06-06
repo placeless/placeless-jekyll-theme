@@ -8,32 +8,16 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
-
-table {
-    font-size: 0.9em;
-    text-align: start;
-    word-wrap: break-word;
-    border-collapse: collapse;
-    margin-bottom: $spacing-unit / 2;
-    width: 100%;
-}
-
-table td, table th {
-    padding: 0.5em 1em;
-    border: 1px solid rgb(216, 216, 216);
-}
-
-table th {
-    background-color: rgba(0, 0, 0, 0.025);
-}
-
 /**
  * Basic styling
  */
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+    /*font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;*/
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
     color: $text-color;
-    background-color: $background-color;
+    background-color: $background-color-gray;
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -41,11 +25,13 @@ body {
     font-feature-settings: "kern" 1;
     font-kerning: normal;
     text-rendering: optimizeLegibility;
+    // text-align: justify;
+    // text-justify: auto;
 }
 
-h1 { font-size: 1.25em; }
-h2 { font-size: 1.125em; }
-h3 { font-size: 1.05em; }
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.25em; }
+h3 { font-size: 1.125em; }
 h2, h3 { margin: 2em 0; }
 h4, h5, h6 {
     font-size: 1em;
@@ -60,10 +46,13 @@ strong { font-weight: 600; }
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl, figure,
-iframe, video, hr,
-%vertical-rhythm { margin-bottom: $spacing-unit / 2; }
+iframe, video, hr, details,
+%vertical-rhythm { margin-bottom: $spacing-unit / 3 * 2; }
 
-
+iframe {
+    display: block;
+    margin: $spacing-unit / 2 auto;
+}
 
 /**
  * Images
@@ -84,10 +73,12 @@ img {
 figure > img { display: block; }
 
 figcaption {
-    font-size: $small-font-size * 0.875;
-    margin-bottom: $spacing-unit;
+    // font-size: $small-font-size * 0.875;
+    font-size: 12px;
+    margin-bottom: $spacing-unit / 2;
     text-align: center;
     width: 100%;
+    color: $grey-color;
 }
 
 
@@ -96,11 +87,16 @@ figcaption {
  * Lists
  */
 ul, ol {
-    // margin-left: $spacing-unit + 10;
-    margin-left: 2em;
+    padding-left: 20px;
+}
+
+ul {
+    word-wrap: break-word;
 }
 
 li {
+    list-style-position: outside;
+    padding-left: 10px;
     > ul,
     > ol { margin-bottom: 0; }
 }
@@ -122,6 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: $grey-color;
     text-decoration: none;
+    word-wrap: break-word;
 
     &:visited { color: $grey-color; }
 
@@ -160,11 +157,12 @@ code {
     padding: 16px;
     // padding: 8px 12px;
     overflow: auto;
+    text-overflow: ellipsis;
     font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 85%;
     line-height: 1.45;
-    background-color: #f7f7f7;
-    border-radius: 3px;
+    background-color: $background-color-gray;
+    // border-radius: 3px;
 }
 
 code { padding: 1px 5px; }
@@ -186,7 +184,67 @@ pre {
     }
 }
 
-
+/**
+ * Table
+ */
+table {
+    font-size: 0.9em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: start;
+    word-wrap: break-word;
+    border-collapse: collapse;
+    margin-bottom: $spacing-unit / 2;
+    width: 100%;
+    table-layout: fixed;
+    td, th {
+        padding: 0.2em 1em;
+        border: 1px solid rgb(216, 216, 216);
+    }
+    th {
+        background-color: rgba(0, 0, 0, 0.025);
+    }
+    @include media-query-max($on-screen) {
+        thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+        tr {
+            border: 1px solid #ddd;
+            padding: .35em;
+            border-bottom: 3px solid $grey-color-light;
+            display: block;
+            margin-bottom: .625em;
+        }
+        td, th { padding: 0; }
+        td {
+            border: none;
+            border-bottom: 1px solid $grey-color-light;
+            display: block;
+            // font-size: .8em;
+            text-align: right !important;
+        }
+        td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            padding-right: 1em;
+            /* text-transform: uppercase; */
+        }
+        td:last-child {
+            border-bottom: 0;
+        }
+    }
+}
 
 /**
  * Wrapper
@@ -198,6 +256,7 @@ pre {
     margin-left: auto;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
+    background-color: $background-color-white;
     @extend %clearfix;
 
     @include media-query-max($on-screen) {
@@ -252,3 +311,28 @@ pre {
     border: 0 none;
     border-bottom: 1px solid $grey-color;
  }
+
+ cite { margin-left: 1em; }
+
+ /**
+ * Keyboard Key
+ */
+
+kbd {
+    color: $background-color-gray;
+    padding: 0 4px;
+    background-color: #444;
+    font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.7em;
+    border-bottom: 2px solid #111;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/**
+* Abbreviations
+*/
+abbr[title] {
+  cursor: help;
+}

@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<div class="home">
-
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="post-content" itemprop="articleList">
 {% for post in site.posts %}
   {% assign currentdate = post.date | date: "%Y" %}
   {% if currentdate != date %}
@@ -12,8 +12,8 @@ layout: default
     <ul class="post-list">
     {% assign date = currentdate %}
   {% endif %}
-    <li><a class="post-link" href="{{ post.url | prepend: site.baseurl }}#article">{{ post.title }}</a></li>
+    <li><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
   {% if forloop.last %}</ul>{% endif %}
 {% endfor %}
-
 </div>
+</article>
