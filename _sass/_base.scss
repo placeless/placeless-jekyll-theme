@@ -71,10 +71,20 @@ img {
  * Figures
  */
 figure > img { display: block; }
+figure.feel_good img {
+  margin-left: 1em;
+  margin-top: 1em;
+  max-width: 40%;
+}
+figure.feel_good img + figcaption {
+  margin-left: 1em;
+  text-align: left;
+}
 
 figcaption {
     // font-size: $small-font-size * 0.875;
     font-size: 12px;
+    margin-top: $spacing-unit / 2;
     margin-bottom: $spacing-unit / 2;
     text-align: center;
     width: 100%;

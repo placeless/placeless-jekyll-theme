@@ -108,6 +108,10 @@
 .post-meta {
     font-size: $meta-font-size;
     color: $grey-color;
+    margin-top: -20px;
+    a:not(:first-child) {
+        margin-left: 10px;
+    }
 }
 
 .post-link {
@@ -138,4 +142,8 @@ div.highlight {
 
         }
     }
+}
+
+summary + .highlight {
+    margin-top: $spacing-unit / 1.5;
 }
